@@ -6,7 +6,7 @@
 /*   By: mariorte <mariorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:34:03 by mariorte          #+#    #+#             */
-/*   Updated: 2025/01/28 10:55:47 by mariorte         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:22:59 by mariorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,32 @@ char	*get_read(int fd)
 	return (NULL);
 }
 
+char	*get_scan(char *buffer, char *accu)
+{
+	int		i;
+	char	*line;
+	static char *resto
+
+	i = 0;
+	while (buffer[i] != '\0')
+	{
+		if (buffer[i] == '\n')
+		{
+			line = malloc(i);
+			line = ft_strlcpy(line, buffer, i);
+			resto = malloc(BUFFER_SIZE - i);
+			while ((buffer[i] != '\0'))
+			{
+				i++;
+				resto[i] = buffer[i];
+			}
+			free(buffer);
+			return(line);
+		}
+		i++;
+	}
+	line = 0;
+	accu = ft_strjoin(accu, buffer);
+	free(buffer);
+	return(accu);
+}
