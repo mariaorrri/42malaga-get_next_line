@@ -6,7 +6,7 @@
 /*   By: mariorte <mariorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:07:01 by mariorte          #+#    #+#             */
-/*   Updated: 2025/01/28 12:19:57 by mariorte         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:45:21 by mariorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,3 +88,4 @@ char	*ft_strdup(const char *s)
 	d[i] = '\0';
 	return (d);
 }
+
