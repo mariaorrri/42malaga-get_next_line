@@ -6,7 +6,7 @@
 /*   By: mariorte <mariorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:34:03 by mariorte          #+#    #+#             */
-/*   Updated: 2025/01/30 16:09:06 by mariorte         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:23:27 by mariorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,16 @@ char	*ft_found(char *buffer, int i)
 	static char *resto = NULL;
 	char		*temp;
 	
+	if (!buffer)
+		return (NULL);
 	line = malloc(i + 2);
 	if (!line)
 		return (NULL);
 	ft_strlcpy(line, buffer, i + 1);
-	temp = ft_strdup(buffer + i + 1);
+	if (buffer[i + 1] != '\0')
+		temp = ft_strdup(buffer + i + 1);
+	else
+		temp = NULL;
 	if (!temp)
 	{
 		free(line);
@@ -87,13 +92,9 @@ char	*get_next_line(int fd)
 	
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = ft_found(NULL, 0);
-	if (line)
-		return (line);
 	buffer = get_read(fd);
 	if (!buffer)
 		return (NULL);
-	get_scan(buffer);
-	line = ft_found(NULL, 0);
+	line = get_scan(buffer);
 	return (line);
 }

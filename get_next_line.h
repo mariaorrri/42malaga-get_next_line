@@ -6,7 +6,7 @@
 /*   By: mariorte <mariorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:07:13 by mariorte          #+#    #+#             */
-/*   Updated: 2025/01/30 13:51:33 by mariorte         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:12:43 by mariorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 char	*get_read(int fd);
 char	*ft_found(char *buffer, int i);
+char	*get_next_line(int fd);
 char	*get_scan(char *buffer);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
