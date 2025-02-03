@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariorte <mariorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 10:34:03 by mariorte          #+#    #+#             */
-/*   Updated: 2025/02/03 16:17:56 by mariorte         ###   ########.fr       */
+/*   Created: 2025/02/03 16:26:19 by mariorte          #+#    #+#             */
+/*   Updated: 2025/02/03 16:27:07 by mariorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*extract_line(char **resto)
 {
