@@ -6,7 +6,7 @@
 /*   By: mariorte <mariorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:26:36 by mariorte          #+#    #+#             */
-/*   Updated: 2025/02/03 16:26:58 by mariorte         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:13:14 by mariorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,8 @@
 #  define BUFFER_SIZE 28
 # endif
 
-/* char	*get_read(int fd);
-char	*ft_found(char *buffer, int i);
-char	*get_scan(char *buffer); */
-char	*extract_line(char **resto);
-char	*process_buffer(char **resto, char *buffer, int read_bytes);
+char	*extract_line(char **rest);
+char	*process_buffer(char **rest, char *buffer, int read_bytes);
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);

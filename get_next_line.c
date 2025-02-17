@@ -6,69 +6,69 @@
 /*   By: mariorte <mariorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:34:03 by mariorte          #+#    #+#             */
-/*   Updated: 2025/02/03 16:17:56 by mariorte         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:13:14 by mariorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*extract_line(char **resto)
+char	*extract_line(char **rest)
 {
 	char	*line;
 	char	*temp;
 	int		i;
 
-	if (!*resto)
+	if (!*rest)
 		return (NULL);
 	i = 0;
-	while ((*resto)[i] && (*resto)[i] != '\n')
+	while ((*rest)[i] && (*rest)[i] != '\n')
 		i++;
-	if ((*resto)[i] == '\n')
+	if ((*rest)[i] == '\n')
 		i++;
-	line = ft_substr(*resto, 0, i);
-	if ((*resto)[i])
+	line = ft_substr(*rest, 0, i);
+	if ((*rest)[i])
 	{
-		temp = ft_strdup(*resto + i);
-		free(*resto);
-		*resto = temp;
+		temp = ft_strdup(*rest + i);
+		free(*rest);
+		*rest = temp;
 	}
 	else
 	{
-		free(*resto);
-		*resto = NULL;
+		free(*rest);
+		*rest = NULL;
 	}
 	return (line);
 }
 
-char	*process_buffer(char **resto, char *buffer, int read_bytes)
+char	*process_buffer(char **rest, char *buffer, int read_bytes)
 {
 	char	*temp;
 
 	if (read_bytes < 0)
 	{
-		free(*resto);
-		*resto = NULL;
+		free(*rest);
+		*rest = NULL;
 		return (NULL);
 	}
-	if (read_bytes <= 0 && !*resto)
+	if (read_bytes <= 0 && !*rest)
 		return (NULL);
 	buffer[read_bytes] = '\0';
-	if (!*resto)
-		*resto = ft_strdup(buffer);
+	if (!*rest)
+		*rest = ft_strdup(buffer);
 	else
 	{
-		temp = ft_strjoin(*resto, buffer);
-		free(*resto);
-		*resto = temp;
+		temp = ft_strjoin(*rest, buffer);
+		free(*rest);
+		*rest = temp;
 	}
-	if (ft_strchr(*resto, '\n'))
-		return (extract_line(resto));
+	if (ft_strchr(*rest, '\n'))
+		return (extract_line(rest));
 	return (NULL);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*resto;
+	static char	*rest;
 	char		*buffer;
 	char		*line;
 	int			read_bytes;
@@ -79,14 +79,14 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	read_bytes = read(fd, buffer, BUFFER_SIZE);
-	line = process_buffer(&resto, buffer, read_bytes);
+	line = process_buffer(&rest, buffer, read_bytes);
 	while (!line && read_bytes > 0)
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
-		line = process_buffer(&resto, buffer, read_bytes);
+		line = process_buffer(&rest, buffer, read_bytes);
 	}
 	free(buffer);
-	if (!line && resto)
-		line = extract_line(&resto);
+	if (!line && rest)
+		line = extract_line(&rest);
 	return (line);
 }
